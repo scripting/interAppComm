@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Client</title>
+		<meta charset='utf-8'> 
+		<meta name="copyright" content="Copyright 2014, Small Picture, Inc.">
+		
+		<!-- 
+			This is the client demo app for Interapplication Communication in JavaScript.
+			
+			https://github.com/scripting/interAppComm
+			
+			4/12/14 by DW
+			 -->
+		
+		<script>
+			var ctCalls = 0;
+			
+			function makeCall () {
+				localStorage.stringToConvert = document.getElementById ("idInputString").value;
+				document.getElementById ("idCallCount").innerHTML = ++ctCalls + " calls.";
+				}
+			function backgroundProcess () {
+				if (localStorage.convertedString != undefined) {
+					document.getElementById ("idConvertedString").innerHTML = localStorage.convertedString;
+					localStorage.removeItem ("convertedString");
+					}
+				}
+			function startup () {
+				self.setInterval (function () {backgroundProcess ()}, 1000); //call every second
+				}
+			</script>
+		
+		<style>
+			.divForm {
+				font-size: 18px;
+				width: 70%;
+				margin-left: auto; margin-right: auto;
+				margin-top: 100px;
+				}
+			</style>
+		</head>
+	<body>
+		<div class="divForm">
+			<p>Enter a string. We call the server when you hit Submit.</p>
+			<input type="text" id="idInputString" size="50">
+			<input type="submit" value="Submit" onclick="makeCall ()">
+			<p id="idConvertedString"></p>
+			<p id="idCallCount"></p>
+			</div>
+		<script>
+			startup ();
+			</script>
+		</body>
+	</html>

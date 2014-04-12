@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Server</title>
+		<meta charset='utf-8'> 
+		<meta name="copyright" content="Copyright 2014, Small Picture, Inc.">
+		
+		<!-- 
+			This is the server demo app for Interapplication Communication in JavaScript.
+			
+			https://github.com/scripting/interAppComm
+			
+			4/12/14 by DW
+			 -->
+		
+		<script>
+			function backgroundProcess () {
+				if (localStorage.stringToConvert != undefined) {
+					localStorage.convertedString = localStorage.stringToConvert.toUpperCase ();
+					localStorage.removeItem ("stringToConvert");
+					}
+				}
+			function startup () {
+				self.setInterval (function () {backgroundProcess ()}, 1000); //call every second
+				}
+			</script>
+		</head>
+	<body>
+		<script>
+			startup ();
+			</script>
+		</body>
+	</html>
