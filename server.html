@@ -2,11 +2,10 @@
 <html>
 	<head>
 		<title>Server</title>
-		<meta charset='utf-8'> 
 		<meta name="copyright" content="Copyright 2014, Small Picture, Inc.">
 		
 		<!-- 
-			This is the server demo app for Interapplication Communication in JavaScript.
+			Server demo app for Interapplication Communication in JavaScript.
 			
 			https://github.com/scripting/interAppComm
 			
@@ -21,7 +20,7 @@
 					}
 				}
 			function startup () {
-				self.setInterval (function () {backgroundProcess ()}, 1000); //call every second
+				window.addEventListener ("storage", backgroundProcess, false);
 				}
 			</script>
 		</head>
@@ -31,3 +30,4 @@
 			</script>
 		</body>
 	</html>
+
